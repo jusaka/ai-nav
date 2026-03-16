@@ -51,6 +51,8 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
 .cat-btn{padding:8px 16px;border-radius:20px;border:none;background:transparent;color:var(--text2);font-size:13px;cursor:pointer;white-space:nowrap;transition:all .2s;display:flex;align-items:center;gap:4px}
 .cat-btn:hover{background:var(--bg3)}
 .cat-btn.active{background:var(--accent);color:#fff}
+.cat-count{font-size:10px;background:rgba(255,255,255,0.15);padding:1px 6px;border-radius:8px;margin-left:2px}
+.cat-btn.active .cat-count{background:rgba(255,255,255,0.25)}
 
 /* Main */
 .main{max-width:1200px;margin:0 auto;padding:24px 16px 80px}
@@ -168,13 +170,15 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
 <!-- Footer -->
 <div class="footer">
   <p>AI导航 · 每日更新 · <span id="lastUpdated"></span></p>
-  <p style="margin-top:4px">Made with ❤️ by 和珅 | <a href="https://github.com/jusaka/ai-nav" style="color:var(--accent);text-decoration:none">GitHub</a></p>
+  <p style="margin-top:4px">发现好工具？<a href="https://github.com/jusaka/ai-nav/issues/new?title=提交新工具&body=工具名称：%0A工具地址：%0A一句话描述：%0A分类：" style="color:var(--accent);text-decoration:none;font-weight:600">提交收录 →</a></p>
+  <p style="margin-top:4px;font-size:11px">Made with ❤️ by 和珅 | <a href="https://github.com/jusaka/ai-nav" style="color:var(--accent);text-decoration:none">GitHub</a> | 按 <kbd style="background:var(--bg3);padding:1px 5px;border-radius:3px;font-size:10px">/</kbd> 搜索</p>
 </div>
 
 <!-- Back to top -->
 <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
 (function() {
   let toolsData = null;
   let currentCat = 'all';
@@ -199,8 +203,10 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
 
     // Category nav
     const nav = document.getElementById('catNav');
-    nav.innerHTML = `<button class="cat-btn active" data-cat="all">🏠 全部</button>` +
-      toolsData.categories.map(c => `<button class="cat-btn" data-cat="${c.id}">${c.icon} ${c.name}</button>`).join('');
+    const catCounts = {};
+    toolsData.tools.forEach(t => { catCounts[t.category] = (catCounts[t.category]||0)+1; });
+    nav.innerHTML = `<button class="cat-btn active" data-cat="all">🏠 全部 <span class="cat-count">${toolsData.tools.length}</span></button>` +
+      toolsData.categories.map(c => `<button class="cat-btn" data-cat="${c.id}">${c.icon} ${c.name} <span class="cat-count">${catCounts[c.id]||0}</span></button>`).join('');
     
     nav.addEventListener('click', e => {
       const btn = e.target.closest('.cat-btn');
@@ -252,6 +258,21 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
     // Back to top
     window.addEventListener('scroll', () => {
       document.getElementById('backTop').style.display = window.scrollY > 400 ? 'flex' : 'none';
+    });
+
+    // Keyboard shortcuts: / to search, Esc to clear
+    document.addEventListener('keydown', e => {
+      if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+        e.preventDefault();
+        document.getElementById('searchInput').focus();
+      }
+      if (e.key === 'Escape') {
+        const input = document.getElementById('searchInput');
+        input.value = '';
+        input.blur();
+        searchQuery = '';
+        render();
+      }
     });
 
     render();
@@ -322,9 +343,9 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
     const starBadge = tool.featured ? '<span class="star">⭐</span>' : '';
     const newBadge = tool.addedDate && (Date.now() - new Date(tool.addedDate).getTime()) < 7*24*60*60*1000 ? '<span class="new-badge">NEW</span>' : '';
     const iconColor = getIconColor(tool.name);
-    // Use real favicon from Google API, fallback to initial letter
-    const faviconUrl = `https://www.google.com/s2/favicons?domain=${new URL(tool.url).hostname}&sz=64`;
-    const iconHtml = `<div class="tool-icon" style="background:${iconColor}15"><img src="${faviconUrl}" onerror="this.style.display='none';this.parentElement.textContent='${getInitial(tool.name)}';this.parentElement.style.color='${iconColor}';this.parentElement.style.fontWeight='800';this.parentElement.style.fontSize='18px'" loading="lazy"></div>`;
+    // Favicon: try multiple sources, fallback to initial letter
+    const host = new URL(tool.url).hostname;
+    const iconHtml = `<div class="tool-icon" style="background:${iconColor}15"><img src="https://favicon.im/${host}" onerror="this.onerror=null;this.src='https://icon.horse/icon/${host}'" onload="if(this.naturalWidth<2){this.style.display='none';this.parentElement.textContent='${getInitial(tool.name)}';this.parentElement.style.color='${iconColor}';this.parentElement.style.fontWeight='800';this.parentElement.style.fontSize='18px'}" loading="lazy"></div>`;
 
     const isFav = favorites.includes(tool.name);
     const favBtn = `<button class="fav-btn ${isFav ? 'active' : ''}" data-name="${tool.name}" onclick="event.preventDefault();event.stopPropagation();toggleFav('${tool.name.replace(/'/g,"\\'")}')">♥</button>`;
