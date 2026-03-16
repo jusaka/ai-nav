@@ -102,6 +102,24 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
 .empty{text-align:center;padding:60px 20px;color:var(--text3)}
 .empty .icon{font-size:48px;margin-bottom:12px}
 
+/* Tool Detail Modal */
+.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:16px}
+.modal-overlay.show{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--bg3);border-radius:16px;max-width:480px;width:100%;padding:24px;position:relative;max-height:80vh;overflow-y:auto}
+.modal-close{position:absolute;top:12px;right:12px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--text3);padding:4px 8px;border-radius:6px}
+.modal-close:hover{background:var(--bg3)}
+.modal-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.modal-header .tool-icon{width:52px;height:52px;font-size:24px}
+.modal-title{font-size:20px;font-weight:800}
+.modal-desc{color:var(--text2);line-height:1.7;margin-bottom:16px;font-size:14px}
+.modal-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.modal-actions{display:flex;gap:10px}
+.modal-btn{flex:1;padding:12px;border-radius:10px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;text-align:center;text-decoration:none}
+.modal-btn-primary{background:var(--accent);color:#fff}
+.modal-btn-primary:hover{background:var(--accent2)}
+.modal-btn-secondary{background:var(--bg3);color:var(--text)}
+.modal-btn-secondary:hover{background:var(--bg4)}
+
 /* Responsive */
 @media (max-width:640px){
   .hero h1{font-size:24px}
@@ -155,6 +173,7 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
     <button class="filter-btn" data-filter="domestic">🇨🇳 国内直连</button>
     <button class="filter-btn" data-filter="free">🆓 免费</button>
     <button class="filter-btn" data-filter="open">📖 开源</button>
+    <button class="filter-btn" id="randomBtn" onclick="randomTool()">🎲 随机推荐</button>
   </div>
 
   <!-- Tool Sections -->
@@ -164,6 +183,25 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
   <div id="empty" class="empty" style="display:none">
     <div class="icon">🔍</div>
     <div>没有找到匹配的工具</div>
+  </div>
+</div>
+
+<!-- Tool Detail Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-header">
+      <div class="tool-icon" id="modalIcon"></div>
+      <div>
+        <div class="modal-title" id="modalTitle"></div>
+      </div>
+    </div>
+    <div class="modal-desc" id="modalDesc"></div>
+    <div class="modal-meta" id="modalTags"></div>
+    <div class="modal-actions">
+      <button class="modal-btn modal-btn-secondary" id="modalFav" onclick="modalToggleFav()">❤️ 收藏</button>
+      <a class="modal-btn modal-btn-primary" id="modalLink" target="_blank" rel="noopener">🔗 访问网站</a>
+    </div>
   </div>
 </div>
 
@@ -267,6 +305,10 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
         document.getElementById('searchInput').focus();
       }
       if (e.key === 'Escape') {
+        if (document.getElementById('modalOverlay').classList.contains('show')) {
+          closeModal();
+          return;
+        }
         const input = document.getElementById('searchInput');
         input.value = '';
         input.blur();
@@ -350,14 +392,14 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
     const isFav = favorites.includes(tool.name);
     const favBtn = `<button class="fav-btn ${isFav ? 'active' : ''}" data-name="${tool.name}" onclick="event.preventDefault();event.stopPropagation();toggleFav('${tool.name.replace(/'/g,"\\'")}')">♥</button>`;
 
-    return `<a class="tool-card ${tool.featured ? 'featured' : ''}" href="${tool.url}" target="_blank" rel="noopener">
+    return `<div class="tool-card ${tool.featured ? 'featured' : ''}" onclick="openModal('${tool.name.replace(/'/g,"\\'")}')">
       ${iconHtml}
       <div class="tool-info">
         <div class="tool-name">${tool.name} ${newBadge} ${starBadge} ${favBtn}</div>
         <div class="tool-desc">${tool.desc}</div>
         <div class="tool-tags">${tags}</div>
       </div>
-    </a>`;
+    </div>`;
   }
 
   // Global fav toggle
@@ -367,6 +409,43 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
     else favorites.push(name);
     localStorage.setItem('ainav_favs', JSON.stringify(favorites));
     render();
+  };
+
+  // Modal
+  let currentModalTool = null;
+  window.openModal = function(name) {
+    const tool = toolsData.tools.find(t => t.name === name);
+    if (!tool) return;
+    currentModalTool = tool;
+    const iconColor = getIconColor(tool.name);
+    const host = new URL(tool.url).hostname;
+    document.getElementById('modalIcon').innerHTML = `<img src="https://favicon.im/${host}" onerror="this.style.display='none';this.parentElement.textContent='${getInitial(tool.name)}';this.parentElement.style.color='${iconColor}';this.parentElement.style.fontWeight='800';this.parentElement.style.fontSize='24px'" style="width:100%;height:100%;object-fit:cover;border-radius:10px">`;
+    document.getElementById('modalIcon').style.background = iconColor + '15';
+    document.getElementById('modalTitle').textContent = tool.name;
+    document.getElementById('modalDesc').textContent = tool.desc;
+    document.getElementById('modalTags').innerHTML = (tool.tags||[]).map(tag => `<span class="tag ${getTagClass(tag)}">${tag}</span>`).join('');
+    document.getElementById('modalLink').href = tool.url;
+    const isFav = favorites.includes(tool.name);
+    document.getElementById('modalFav').textContent = isFav ? '💔 取消收藏' : '❤️ 收藏';
+    document.getElementById('modalOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeModal = function() {
+    document.getElementById('modalOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+    currentModalTool = null;
+  };
+  window.modalToggleFav = function() {
+    if (!currentModalTool) return;
+    toggleFav(currentModalTool.name);
+    const isFav = favorites.includes(currentModalTool.name);
+    document.getElementById('modalFav').textContent = isFav ? '💔 取消收藏' : '❤️ 收藏';
+  };
+
+  window.randomTool = function() {
+    const tools = toolsData.tools;
+    const tool = tools[Math.floor(Math.random() * tools.length)];
+    openModal(tool.name);
   };
 
   function render() {
