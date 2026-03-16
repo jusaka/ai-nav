@@ -946,6 +946,226 @@
         "国内直连",
         "免费"
       ]
+    },
+    {
+      "name": "Copilot",
+      "url": "https://copilot.microsoft.com",
+      "desc": "微软AI助手，集成Bing搜索+GPT-4，免费用",
+      "category": "chat",
+      "tags": [
+        "国内直连",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "MiniMax",
+      "url": "https://www.minimaxi.com",
+      "desc": "海螺AI，擅长长文和角色扮演",
+      "category": "chat",
+      "tags": [
+        "国内直连",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "百川",
+      "url": "https://www.baichuan-ai.com",
+      "desc": "百川智能出品，中文理解深厚",
+      "category": "chat",
+      "tags": [
+        "国内直连",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Flux",
+      "url": "https://flux1.ai",
+      "desc": "Black Forest Labs开源文生图模型，质量媲美DALL-E",
+      "category": "image",
+      "tags": [
+        "开源",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "通义万相视频",
+      "url": "https://tongyi.aliyun.com/wanxiang/videoCreation",
+      "desc": "阿里AI图生视频，免费使用",
+      "category": "video",
+      "tags": [
+        "国内直连",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "ChatTTS",
+      "url": "https://chattts.com",
+      "desc": "开源中文语音合成，自然度极高",
+      "category": "audio",
+      "tags": [
+        "开源",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Fish Audio",
+      "url": "https://fish.audio",
+      "desc": "AI声音克隆+语音合成，支持中文",
+      "category": "audio",
+      "tags": [
+        "国内直连",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "笔灵AI",
+      "url": "https://ibiling.cn",
+      "desc": "AI论文/作文/公文写作，模板丰富",
+      "category": "writing",
+      "tags": [
+        "国内直连",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "智谱AI开放平台",
+      "url": "https://open.bigmodel.cn",
+      "desc": "清华智谱API平台，开发者接入AI能力",
+      "category": "coding",
+      "tags": [
+        "国内直连",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Napkin AI",
+      "url": "https://napkin.ai",
+      "desc": "文字自动生成精美信息图/图表",
+      "category": "office",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "腾讯文档AI",
+      "url": "https://docs.qq.com",
+      "desc": "腾讯文档内置AI，智能写作+表格分析",
+      "category": "office",
+      "tags": [
+        "国内直连",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Motiff",
+      "url": "https://motiff.com",
+      "desc": "AI驱动的UI设计工具，智能布局和设计系统",
+      "category": "design",
+      "tags": [
+        "国内直连",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Consensus",
+      "url": "https://consensus.app",
+      "desc": "AI学术搜索引擎，直接搜论文结论",
+      "category": "education",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Khanmigo",
+      "url": "https://www.khanacademy.org/khan-labs",
+      "desc": "可汗学院AI辅导，一对一个性化教学",
+      "category": "education",
+      "tags": [
+        "需翻墙",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Devv.ai",
+      "url": "https://devv.ai",
+      "desc": "程序员专用AI搜索，代码问题一搜即答",
+      "category": "search",
+      "tags": [
+        "国内直连",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Lovable",
+      "url": "https://lovable.dev",
+      "desc": "AI全栈应用生成器，对话式创建Web应用",
+      "category": "coding",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Devin",
+      "url": "https://devin.ai",
+      "desc": "全球首个AI软件工程师，自主完成开发任务",
+      "category": "coding",
+      "tags": [
+        "需翻墙",
+        "付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "HeyGen",
+      "url": "https://www.heygen.com",
+      "desc": "AI数字人视频，输入文字生成真人讲解视频",
+      "category": "video",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "D-ID",
+      "url": "https://www.d-id.com",
+      "desc": "AI数字人生成，照片变说话视频",
+      "category": "video",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Opus Clip",
+      "url": "https://www.opus.pro",
+      "desc": "AI视频剪辑，长视频自动生成短视频",
+      "category": "video",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
     }
   ],
   "lastUpdated": "2026-03-16"

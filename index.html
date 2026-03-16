@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#0a0f1a">
 <meta name="description" content="AI工具导航 - 精选国内外最好用的AI工具，对话、绘画、视频、编程、办公一站式导航">
 <title>AI导航 · 发现最好用的AI工具</title>
+<link rel="manifest" href="manifest.json">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -71,6 +72,8 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
 .tool-info{flex:1;min-width:0}
 .tool-name{font-size:15px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:6px}
 .tool-name .star{color:var(--orange);font-size:12px}
+.new-badge{font-size:9px;background:#ef4444;color:#fff;padding:1px 5px;border-radius:6px;font-weight:700;letter-spacing:0.5px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
 .tool-desc{font-size:12px;color:var(--text2);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .tool-tags{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
 .tag{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:500}
@@ -79,6 +82,8 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
 .tag-free{background:rgba(59,130,246,0.1);color:var(--accent)}
 .tag-paid{background:rgba(156,163,175,0.15);color:var(--text3)}
 .tag-open{background:rgba(168,139,250,0.12);color:#a78bfa}
+.fav-btn{background:none;border:none;font-size:14px;cursor:pointer;color:var(--bg4);margin-left:auto;padding:2px 4px;transition:all .2s;opacity:0.4}
+.fav-btn:hover,.fav-btn.active{opacity:1;color:#ef4444;transform:scale(1.2)}
 
 /* Footer */
 .footer{text-align:center;padding:24px;font-size:12px;color:var(--text3);border-top:1px solid var(--bg3)}
@@ -142,7 +147,8 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
 <!-- Filter Bar -->
 <div class="main">
   <div class="filter-bar" id="filterBar">
-    <button class="filter-btn active" data-filter="all">全部</button>
+    <button class="filter-btn" data-filter="all">全部</button>
+    <button class="filter-btn" data-filter="favorites">❤️ 我的收藏</button>
     <button class="filter-btn" data-filter="featured">⭐ 精选</button>
     <button class="filter-btn" data-filter="domestic">🇨🇳 国内直连</button>
     <button class="filter-btn" data-filter="free">🆓 免费</button>
@@ -174,6 +180,7 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
   let currentCat = 'all';
   let currentFilter = 'all';
   let searchQuery = '';
+  let favorites = JSON.parse(localStorage.getItem('ainav_favs') || '[]');
 
   // Load data
   fetch('data/tools.json')
@@ -202,8 +209,12 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
       btn.classList.add('active');
       currentCat = btn.dataset.cat;
       render();
-      // Scroll to content
-      document.querySelector('.main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Scroll to section if in "all" view
+      if (currentCat !== 'all') {
+        document.querySelector('.main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     });
 
     // Filter bar
@@ -255,7 +266,9 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
     }
 
     // Filter
-    if (currentFilter === 'featured') {
+    } else if (currentFilter === 'favorites') {
+      filtered = filtered.filter(t => favorites.includes(t.name));
+    } else if (currentFilter === 'featured') {
       filtered = filtered.filter(t => t.featured);
     } else if (currentFilter === 'domestic') {
       filtered = filtered.filter(t => t.tags?.includes('国内直连'));
@@ -307,18 +320,33 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
       `<span class="tag ${getTagClass(tag)}">${tag}</span>`
     ).join('');
     const starBadge = tool.featured ? '<span class="star">⭐</span>' : '';
+    const newBadge = tool.addedDate && (Date.now() - new Date(tool.addedDate).getTime()) < 7*24*60*60*1000 ? '<span class="new-badge">NEW</span>' : '';
     const iconColor = getIconColor(tool.name);
-    const iconHtml = `<div class="tool-icon" style="background:${iconColor}20;color:${iconColor};font-weight:800;font-size:18px">${getInitial(tool.name)}</div>`;
+    // Use real favicon from Google API, fallback to initial letter
+    const faviconUrl = `https://www.google.com/s2/favicons?domain=${new URL(tool.url).hostname}&sz=64`;
+    const iconHtml = `<div class="tool-icon" style="background:${iconColor}15"><img src="${faviconUrl}" onerror="this.style.display='none';this.parentElement.textContent='${getInitial(tool.name)}';this.parentElement.style.color='${iconColor}';this.parentElement.style.fontWeight='800';this.parentElement.style.fontSize='18px'" loading="lazy"></div>`;
+
+    const isFav = favorites.includes(tool.name);
+    const favBtn = `<button class="fav-btn ${isFav ? 'active' : ''}" data-name="${tool.name}" onclick="event.preventDefault();event.stopPropagation();toggleFav('${tool.name.replace(/'/g,"\\'")}')">♥</button>`;
 
     return `<a class="tool-card ${tool.featured ? 'featured' : ''}" href="${tool.url}" target="_blank" rel="noopener">
       ${iconHtml}
       <div class="tool-info">
-        <div class="tool-name">${tool.name} ${starBadge}</div>
+        <div class="tool-name">${tool.name} ${newBadge} ${starBadge} ${favBtn}</div>
         <div class="tool-desc">${tool.desc}</div>
         <div class="tool-tags">${tags}</div>
       </div>
     </a>`;
   }
+
+  // Global fav toggle
+  window.toggleFav = function(name) {
+    const idx = favorites.indexOf(name);
+    if (idx >= 0) favorites.splice(idx, 1);
+    else favorites.push(name);
+    localStorage.setItem('ainav_favs', JSON.stringify(favorites));
+    render();
+  };
 
   function render() {
     const content = document.getElementById('content');
