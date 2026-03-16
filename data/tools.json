@@ -1,0 +1,599 @@
+{
+  "categories": [
+    {
+      "id": "chat",
+      "name": "AI 对话",
+      "icon": "💬",
+      "desc": "智能对话、问答、写作助手"
+    },
+    {
+      "id": "search",
+      "name": "AI 搜索",
+      "icon": "🔍",
+      "desc": "智能搜索引擎"
+    },
+    {
+      "id": "writing",
+      "name": "AI 写作",
+      "icon": "✍️",
+      "desc": "文案、论文、翻译、营销文"
+    },
+    {
+      "id": "image",
+      "name": "AI 绘画",
+      "icon": "🎨",
+      "desc": "图片生成、编辑、设计"
+    },
+    {
+      "id": "video",
+      "name": "AI 视频",
+      "icon": "🎬",
+      "desc": "视频生成、编辑、字幕"
+    },
+    {
+      "id": "audio",
+      "name": "AI 音频",
+      "icon": "🎵",
+      "desc": "语音合成、音乐生成、配音"
+    },
+    {
+      "id": "coding",
+      "name": "AI 编程",
+      "icon": "💻",
+      "desc": "代码生成、IDE、开发工具"
+    },
+    {
+      "id": "office",
+      "name": "AI 办公",
+      "icon": "📊",
+      "desc": "PPT、文档、表格、思维导图"
+    },
+    {
+      "id": "design",
+      "name": "AI 设计",
+      "icon": "🎯",
+      "desc": "UI设计、Logo、海报、原型"
+    },
+    {
+      "id": "education",
+      "name": "AI 学习",
+      "icon": "📚",
+      "desc": "学习辅导、考试、题库"
+    }
+  ],
+  "tools": [
+    {
+      "name": "ChatGPT",
+      "url": "https://chat.openai.com",
+      "desc": "OpenAI旗舰对话模型，全球最流行的AI助手",
+      "category": "chat",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "chatgpt.svg",
+      "featured": true
+    },
+    {
+      "name": "Claude",
+      "url": "https://claude.ai",
+      "desc": "Anthropic出品，擅长长文理解和代码，深度思考能力强",
+      "category": "chat",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "claude.svg",
+      "featured": true
+    },
+    {
+      "name": "Kimi",
+      "url": "https://kimi.moonshot.cn",
+      "desc": "月之暗面出品，支持200万字长文，国内免翻直用",
+      "category": "chat",
+      "tags": ["国内直连", "免费"],
+      "icon": "kimi.svg",
+      "featured": true
+    },
+    {
+      "name": "豆包",
+      "url": "https://www.doubao.com",
+      "desc": "字节跳动出品，多模态对话，支持图片理解",
+      "category": "chat",
+      "tags": ["国内直连", "免费"],
+      "icon": "doubao.svg",
+      "featured": true
+    },
+    {
+      "name": "通义千问",
+      "url": "https://tongyi.aliyun.com",
+      "desc": "阿里巴巴出品，强大的中文理解能力",
+      "category": "chat",
+      "tags": ["国内直连", "免费"],
+      "icon": "tongyi.svg"
+    },
+    {
+      "name": "文心一言",
+      "url": "https://yiyan.baidu.com",
+      "desc": "百度出品，搜索增强，中文生态丰富",
+      "category": "chat",
+      "tags": ["国内直连", "免费"],
+      "icon": "wenxin.svg"
+    },
+    {
+      "name": "智谱清言",
+      "url": "https://chatglm.cn",
+      "desc": "清华系AI，GLM模型，学术研究强",
+      "category": "chat",
+      "tags": ["国内直连", "免费"],
+      "icon": "zhipu.svg"
+    },
+    {
+      "name": "讯飞星火",
+      "url": "https://xinghuo.xfyun.cn",
+      "desc": "科大讯飞出品，语音交互体验好",
+      "category": "chat",
+      "tags": ["国内直连", "免费"],
+      "icon": "xinghuo.svg"
+    },
+    {
+      "name": "DeepSeek",
+      "url": "https://chat.deepseek.com",
+      "desc": "深度求索出品，开源模型，推理能力强，性价比高",
+      "category": "chat",
+      "tags": ["国内直连", "免费"],
+      "icon": "deepseek.svg",
+      "featured": true
+    },
+    {
+      "name": "腾讯元宝",
+      "url": "https://yuanbao.tencent.com",
+      "desc": "腾讯出品，混元大模型，支持搜索增强",
+      "category": "chat",
+      "tags": ["国内直连", "免费"],
+      "icon": "yuanbao.svg"
+    },
+    {
+      "name": "Gemini",
+      "url": "https://gemini.google.com",
+      "desc": "Google出品，多模态能力强，与Google生态深度整合",
+      "category": "chat",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "gemini.svg"
+    },
+    {
+      "name": "Grok",
+      "url": "https://grok.x.ai",
+      "desc": "xAI出品，实时信息能力强，与X(Twitter)整合",
+      "category": "chat",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "grok.svg"
+    },
+
+    {
+      "name": "Perplexity",
+      "url": "https://www.perplexity.ai",
+      "desc": "AI搜索引擎，实时联网，回答附带来源链接",
+      "category": "search",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "perplexity.svg",
+      "featured": true
+    },
+    {
+      "name": "秘塔AI搜索",
+      "url": "https://metaso.cn",
+      "desc": "国内最好用的AI搜索，无广告，结构化回答",
+      "category": "search",
+      "tags": ["国内直连", "免费"],
+      "icon": "metaso.svg",
+      "featured": true
+    },
+    {
+      "name": "天工AI搜索",
+      "url": "https://www.tiangong.cn",
+      "desc": "昆仑万维出品，AI搜索+对话",
+      "category": "search",
+      "tags": ["国内直连", "免费"],
+      "icon": "tiangong.svg"
+    },
+
+    {
+      "name": "Midjourney",
+      "url": "https://www.midjourney.com",
+      "desc": "最强AI绘画工具，艺术风格出众",
+      "category": "image",
+      "tags": ["需翻墙", "付费"],
+      "icon": "midjourney.svg",
+      "featured": true
+    },
+    {
+      "name": "DALL·E 3",
+      "url": "https://chat.openai.com",
+      "desc": "OpenAI图片生成，内置于ChatGPT，理解力强",
+      "category": "image",
+      "tags": ["需翻墙", "付费"],
+      "icon": "dalle.svg"
+    },
+    {
+      "name": "Stable Diffusion",
+      "url": "https://stability.ai",
+      "desc": "开源图片生成模型，可本地部署，生态最丰富",
+      "category": "image",
+      "tags": ["开源", "免费"],
+      "icon": "sd.svg"
+    },
+    {
+      "name": "通义万相",
+      "url": "https://tongyi.aliyun.com/wanxiang",
+      "desc": "阿里AI绘画，中文提示词友好，免费额度多",
+      "category": "image",
+      "tags": ["国内直连", "免费"],
+      "icon": "wanxiang.svg"
+    },
+    {
+      "name": "即梦AI",
+      "url": "https://jimeng.jianying.com",
+      "desc": "字节跳动AI绘画，与剪映联动，适合短视频创作",
+      "category": "image",
+      "tags": ["国内直连", "免费"],
+      "icon": "jimeng.svg",
+      "featured": true
+    },
+    {
+      "name": "Ideogram",
+      "url": "https://ideogram.ai",
+      "desc": "文字渲染最强的AI绘画，Logo和海报利器",
+      "category": "image",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "ideogram.svg"
+    },
+    {
+      "name": "Leonardo.AI",
+      "url": "https://leonardo.ai",
+      "desc": "游戏美术风格突出，支持实时画布",
+      "category": "image",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "leonardo.svg"
+    },
+    {
+      "name": "LiblibAI",
+      "url": "https://www.liblib.art",
+      "desc": "国内最大的AI绘画模型分享平台，海量LoRA",
+      "category": "image",
+      "tags": ["国内直连", "免费+付费"],
+      "icon": "liblib.svg"
+    },
+
+    {
+      "name": "可灵AI",
+      "url": "https://kling.kuaishou.com",
+      "desc": "快手出品，国产视频生成天花板，效果媲美Sora",
+      "category": "video",
+      "tags": ["国内直连", "免费+付费"],
+      "icon": "kling.svg",
+      "featured": true
+    },
+    {
+      "name": "Sora",
+      "url": "https://sora.com",
+      "desc": "OpenAI视频生成，物理世界模拟，效果震撼",
+      "category": "video",
+      "tags": ["需翻墙", "付费"],
+      "icon": "sora.svg",
+      "featured": true
+    },
+    {
+      "name": "Runway",
+      "url": "https://runwayml.com",
+      "desc": "专业视频AI工具，Gen-3 Alpha，好莱坞级效果",
+      "category": "video",
+      "tags": ["需翻墙", "付费"],
+      "icon": "runway.svg"
+    },
+    {
+      "name": "Pika",
+      "url": "https://pika.art",
+      "desc": "AI视频生成，操作简单，适合社交媒体内容",
+      "category": "video",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "pika.svg"
+    },
+    {
+      "name": "剪映",
+      "url": "https://www.capcut.cn",
+      "desc": "字节跳动视频编辑器，内置AI字幕、AI剪辑、图文成片",
+      "category": "video",
+      "tags": ["国内直连", "免费"],
+      "icon": "capcut.svg"
+    },
+    {
+      "name": "Luma AI",
+      "url": "https://lumalabs.ai",
+      "desc": "3D和视频生成，Dream Machine效果自然",
+      "category": "video",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "luma.svg"
+    },
+
+    {
+      "name": "Suno",
+      "url": "https://suno.com",
+      "desc": "AI音乐生成，输入歌词自动作曲+演唱，效果惊艳",
+      "category": "audio",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "suno.svg",
+      "featured": true
+    },
+    {
+      "name": "ElevenLabs",
+      "url": "https://elevenlabs.io",
+      "desc": "最强AI配音，支持29种语言，声音克隆",
+      "category": "audio",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "elevenlabs.svg"
+    },
+    {
+      "name": "Udio",
+      "url": "https://www.udio.com",
+      "desc": "AI音乐生成，音质出色，支持多种风格",
+      "category": "audio",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "udio.svg"
+    },
+    {
+      "name": "海绵音乐",
+      "url": "https://www.haimianyinyue.com",
+      "desc": "字节跳动AI音乐，中文歌词理解好",
+      "category": "audio",
+      "tags": ["国内直连", "免费"],
+      "icon": "haimian.svg"
+    },
+    {
+      "name": "网易天音",
+      "url": "https://tianyin.music.163.com",
+      "desc": "网易AI音乐创作平台，中文歌曲生成",
+      "category": "audio",
+      "tags": ["国内直连", "免费"],
+      "icon": "tianyin.svg"
+    },
+
+    {
+      "name": "Cursor",
+      "url": "https://cursor.sh",
+      "desc": "AI代码编辑器，基于VSCode，自动补全+对话编程",
+      "category": "coding",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "cursor.svg",
+      "featured": true
+    },
+    {
+      "name": "GitHub Copilot",
+      "url": "https://github.com/features/copilot",
+      "desc": "GitHub官方AI编程助手，VSCode/JetBrains插件",
+      "category": "coding",
+      "tags": ["需翻墙", "付费"],
+      "icon": "copilot.svg",
+      "featured": true
+    },
+    {
+      "name": "Bolt.new",
+      "url": "https://bolt.new",
+      "desc": "AI全栈开发，对话式生成完整Web应用",
+      "category": "coding",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "bolt.svg"
+    },
+    {
+      "name": "Windsurf",
+      "url": "https://codeium.com/windsurf",
+      "desc": "AI代码编辑器，Cascade自动编程流，免费额度多",
+      "category": "coding",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "windsurf.svg"
+    },
+    {
+      "name": "v0",
+      "url": "https://v0.dev",
+      "desc": "Vercel出品，对话式生成React/Next.js前端代码",
+      "category": "coding",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "v0.svg"
+    },
+    {
+      "name": "Replit",
+      "url": "https://replit.com",
+      "desc": "在线IDE+AI编程，云端运行，协作开发",
+      "category": "coding",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "replit.svg"
+    },
+    {
+      "name": "通义灵码",
+      "url": "https://tongyi.aliyun.com/lingma",
+      "desc": "阿里AI编程助手，VSCode/JetBrains插件，国内免翻",
+      "category": "coding",
+      "tags": ["国内直连", "免费"],
+      "icon": "lingma.svg"
+    },
+    {
+      "name": "CodeGeeX",
+      "url": "https://codegeex.cn",
+      "desc": "智谱AI编程助手，开源，支持多种IDE",
+      "category": "coding",
+      "tags": ["国内直连", "免费"],
+      "icon": "codegeex.svg"
+    },
+
+    {
+      "name": "秘塔写作猫",
+      "url": "https://xiezuocat.com",
+      "desc": "AI写作+校对+改写，中文写作神器",
+      "category": "writing",
+      "tags": ["国内直连", "免费+付费"],
+      "icon": "xiezuocat.svg",
+      "featured": true
+    },
+    {
+      "name": "讯飞写作",
+      "url": "https://peiqi.xfyun.cn",
+      "desc": "科大讯飞AI写作，公文/报告/论文模板丰富",
+      "category": "writing",
+      "tags": ["国内直连", "免费"],
+      "icon": "xunfeiwrite.svg"
+    },
+    {
+      "name": "沉浸式翻译",
+      "url": "https://immersivetranslate.com",
+      "desc": "最好用的双语翻译扩展，网页/PDF/视频字幕",
+      "category": "writing",
+      "tags": ["国内直连", "免费+付费"],
+      "icon": "immersive.svg",
+      "featured": true
+    },
+    {
+      "name": "DeepL",
+      "url": "https://www.deepl.com",
+      "desc": "最准确的AI翻译，专业文档翻译首选",
+      "category": "writing",
+      "tags": ["国内直连", "免费+付费"],
+      "icon": "deepl.svg"
+    },
+    {
+      "name": "Notion AI",
+      "url": "https://www.notion.so",
+      "desc": "Notion内置AI，写作/总结/头脑风暴一体化",
+      "category": "writing",
+      "tags": ["需翻墙", "付费"],
+      "icon": "notion.svg"
+    },
+    {
+      "name": "Jasper",
+      "url": "https://www.jasper.ai",
+      "desc": "营销文案AI工具，支持多种语言和模板",
+      "category": "writing",
+      "tags": ["需翻墙", "付费"],
+      "icon": "jasper.svg"
+    },
+
+    {
+      "name": "Gamma",
+      "url": "https://gamma.app",
+      "desc": "AI一键生成PPT/文档/网页，设计感强",
+      "category": "office",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "gamma.svg",
+      "featured": true
+    },
+    {
+      "name": "AiPPT",
+      "url": "https://www.aippt.cn",
+      "desc": "国内AI PPT生成，模板丰富，中文优化",
+      "category": "office",
+      "tags": ["国内直连", "免费+付费"],
+      "icon": "aippt.svg"
+    },
+    {
+      "name": "讯飞智文",
+      "url": "https://zhiwen.xfyun.cn",
+      "desc": "讯飞AI文档+PPT，语音录入转文档",
+      "category": "office",
+      "tags": ["国内直连", "免费"],
+      "icon": "zhiwen.svg"
+    },
+    {
+      "name": "飞书妙记",
+      "url": "https://www.feishu.cn/product/minutes",
+      "desc": "字节飞书AI会议纪要，自动转写+总结",
+      "category": "office",
+      "tags": ["国内直连", "免费"],
+      "icon": "feishu.svg"
+    },
+    {
+      "name": "ChatPDF",
+      "url": "https://www.chatpdf.com",
+      "desc": "上传PDF与AI对话，论文阅读神器",
+      "category": "office",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "chatpdf.svg"
+    },
+    {
+      "name": "ProcessOn",
+      "url": "https://www.processon.com",
+      "desc": "在线思维导图+流程图，AI自动生成",
+      "category": "office",
+      "tags": ["国内直连", "免费+付费"],
+      "icon": "processon.svg"
+    },
+
+    {
+      "name": "Canva",
+      "url": "https://www.canva.cn",
+      "desc": "在线设计平台，AI生成海报/Logo/社交媒体图",
+      "category": "design",
+      "tags": ["国内直连", "免费+付费"],
+      "icon": "canva.svg",
+      "featured": true
+    },
+    {
+      "name": "即时设计",
+      "url": "https://js.design",
+      "desc": "国产Figma替代，AI设计助手，免费用",
+      "category": "design",
+      "tags": ["国内直连", "免费"],
+      "icon": "jsdesign.svg"
+    },
+    {
+      "name": "美图秀秀",
+      "url": "https://www.meitu.com",
+      "desc": "AI修图/换脸/证件照，国民级图片工具",
+      "category": "design",
+      "tags": ["国内直连", "免费+付费"],
+      "icon": "meitu.svg"
+    },
+    {
+      "name": "Remove.bg",
+      "url": "https://www.remove.bg",
+      "desc": "一键AI抠图，去除图片背景",
+      "category": "design",
+      "tags": ["国内直连", "免费+付费"],
+      "icon": "removebg.svg"
+    },
+    {
+      "name": "Figma",
+      "url": "https://www.figma.com",
+      "desc": "UI/UX设计工具，AI辅助设计+原型",
+      "category": "design",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "figma.svg"
+    },
+
+    {
+      "name": "有道AI学习",
+      "url": "https://ai.youdao.com",
+      "desc": "网易有道AI辅导，英语/数学/编程学习",
+      "category": "education",
+      "tags": ["国内直连", "免费+付费"],
+      "icon": "youdao.svg"
+    },
+    {
+      "name": "学堂在线",
+      "url": "https://www.xuetangx.com",
+      "desc": "清华MOOC平台，AI学习助手",
+      "category": "education",
+      "tags": ["国内直连", "免费"],
+      "icon": "xuetang.svg"
+    },
+    {
+      "name": "Quizlet",
+      "url": "https://quizlet.com",
+      "desc": "AI闪卡学习，自动生成练习题",
+      "category": "education",
+      "tags": ["需翻墙", "免费+付费"],
+      "icon": "quizlet.svg"
+    },
+    {
+      "name": "NotebookLM",
+      "url": "https://notebooklm.google.com",
+      "desc": "Google笔记AI，上传资料自动生成播客/总结",
+      "category": "education",
+      "tags": ["需翻墙", "免费"],
+      "icon": "notebooklm.svg",
+      "featured": true
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

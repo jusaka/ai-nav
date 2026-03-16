@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<meta name="theme-color" content="#0a0f1a">
+<meta name="description" content="AI工具导航 - 精选国内外最好用的AI工具，对话、绘画、视频、编程、办公一站式导航">
+<title>AI导航 · 发现最好用的AI工具</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0f1a;--bg2:#111827;--bg3:#1f2937;--bg4:#374151;
+  --text:#f3f4f6;--text2:#9ca3af;--text3:#6b7280;
+  --accent:#3b82f6;--accent2:#60a5fa;
+  --green:#10b981;--green-bg:rgba(16,185,129,0.12);
+  --orange:#f59e0b;--orange-bg:rgba(245,158,11,0.12);
+  --radius:12px;--radius-sm:8px;
+}
+.light{
+  --bg:#f5f7fa;--bg2:#ffffff;--bg3:#e5e7eb;--bg4:#d1d5db;
+  --text:#1f2937;--text2:#4b5563;--text3:#6b7280;
+}
+html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+
+/* Header */
+.header{position:sticky;top:0;z-index:100;background:rgba(10,15,26,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--bg3);padding:0 20px}
+.light .header{background:rgba(245,247,250,0.85)}
+.header-inner{max-width:1200px;margin:0 auto;height:56px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:8px;font-size:18px;font-weight:800;text-decoration:none;color:var(--text)}
+.logo span{font-size:24px}
+.header-right{display:flex;align-items:center;gap:12px}
+.search-box{position:relative}
+.search-box input{width:220px;padding:8px 12px 8px 32px;border-radius:20px;border:1px solid var(--bg3);background:var(--bg2);color:var(--text);font-size:13px;outline:none;transition:all .2s}
+.search-box input:focus{border-color:var(--accent);width:280px}
+.search-box::before{content:'🔍';position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:12px}
+.theme-btn{background:none;border:none;font-size:20px;cursor:pointer;padding:4px}
+
+/* Hero */
+.hero{text-align:center;padding:48px 20px 32px;background:linear-gradient(180deg,rgba(59,130,246,0.08) 0%,transparent 100%)}
+.hero h1{font-size:32px;font-weight:900;margin-bottom:8px;background:linear-gradient(135deg,var(--accent),var(--accent2),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:var(--text2);font-size:14px;max-width:500px;margin:0 auto}
+.hero-stats{display:flex;justify-content:center;gap:24px;margin-top:16px;font-size:13px;color:var(--text3)}
+.hero-stats span{color:var(--accent);font-weight:700;font-size:18px}
+
+/* Category Nav */
+.cat-nav{position:sticky;top:56px;z-index:90;background:var(--bg);border-bottom:1px solid var(--bg3);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.cat-nav::-webkit-scrollbar{display:none}
+.cat-nav-inner{max-width:1200px;margin:0 auto;display:flex;gap:4px;padding:8px 16px;min-width:max-content}
+.cat-btn{padding:8px 16px;border-radius:20px;border:none;background:transparent;color:var(--text2);font-size:13px;cursor:pointer;white-space:nowrap;transition:all .2s;display:flex;align-items:center;gap:4px}
+.cat-btn:hover{background:var(--bg3)}
+.cat-btn.active{background:var(--accent);color:#fff}
+
+/* Main */
+.main{max-width:1200px;margin:0 auto;padding:24px 16px 80px}
+
+/* Section */
+.section{margin-bottom:32px}
+.section-header{display:flex;align-items:center;gap:8px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--bg3)}
+.section-header h2{font-size:18px;font-weight:700}
+.section-header .icon{font-size:22px}
+.section-count{font-size:12px;color:var(--text3);margin-left:auto}
+
+/* Tool Grid */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.tool-card{display:flex;gap:12px;padding:16px;border-radius:var(--radius);border:1px solid var(--bg3);background:var(--bg2);cursor:pointer;transition:all .2s;text-decoration:none;color:var(--text)}
+.tool-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 20px rgba(59,130,246,0.15)}
+.tool-card.featured{border-color:rgba(245,158,11,0.3);background:linear-gradient(135deg,var(--bg2),rgba(245,158,11,0.03))}
+.tool-icon{width:44px;height:44px;border-radius:10px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;overflow:hidden}
+.tool-icon img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.tool-info{flex:1;min-width:0}
+.tool-name{font-size:15px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.tool-name .star{color:var(--orange);font-size:12px}
+.tool-desc{font-size:12px;color:var(--text2);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tool-tags{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
+.tag{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:500}
+.tag-domestic{background:var(--green-bg);color:var(--green)}
+.tag-overseas{background:var(--orange-bg);color:var(--orange)}
+.tag-free{background:rgba(59,130,246,0.1);color:var(--accent)}
+.tag-paid{background:rgba(156,163,175,0.15);color:var(--text3)}
+.tag-open{background:rgba(168,139,250,0.12);color:#a78bfa}
+
+/* Footer */
+.footer{text-align:center;padding:24px;font-size:12px;color:var(--text3);border-top:1px solid var(--bg3)}
+
+/* Filter bar */
+.filter-bar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.filter-btn{padding:6px 14px;border-radius:16px;border:1px solid var(--bg3);background:transparent;color:var(--text2);font-size:12px;cursor:pointer;transition:all .2s}
+.filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* Back to top */
+.back-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:18px;cursor:pointer;box-shadow:0 4px 12px rgba(59,130,246,0.3);display:none;align-items:center;justify-content:center;z-index:100;transition:opacity .2s}
+
+/* Empty */
+.empty{text-align:center;padding:60px 20px;color:var(--text3)}
+.empty .icon{font-size:48px;margin-bottom:12px}
+
+/* Responsive */
+@media (max-width:640px){
+  .hero h1{font-size:24px}
+  .search-box input{width:160px}
+  .search-box input:focus{width:200px}
+  .tool-grid{grid-template-columns:1fr}
+  .header-inner{padding:0}
+}
+@media (max-width:480px){
+  .hero{padding:32px 16px 20px}
+  .hero-stats{gap:16px;font-size:12px}
+}
+</style>
+</head>
+<body>
+<!-- Header -->
+<div class="header">
+  <div class="header-inner">
+    <a class="logo" href="#"><span>🤖</span> AI导航</a>
+    <div class="header-right">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="搜索AI工具..." autocomplete="off">
+      </div>
+      <button class="theme-btn" id="themeToggle" title="切换主题">🌙</button>
+    </div>
+  </div>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>发现最好用的 AI 工具</h1>
+  <p>精选国内外优质AI工具，按需分类，开箱即用</p>
+  <div class="hero-stats">
+    <div><span id="statTools">0</span> 款工具</div>
+    <div><span id="statCats">0</span> 个分类</div>
+    <div><span id="statDomestic">0</span> 国内直连</div>
+  </div>
+</div>
+
+<!-- Category Nav -->
+<div class="cat-nav">
+  <div class="cat-nav-inner" id="catNav"></div>
+</div>
+
+<!-- Filter Bar -->
+<div class="main">
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-btn active" data-filter="all">全部</button>
+    <button class="filter-btn" data-filter="featured">⭐ 精选</button>
+    <button class="filter-btn" data-filter="domestic">🇨🇳 国内直连</button>
+    <button class="filter-btn" data-filter="free">🆓 免费</button>
+    <button class="filter-btn" data-filter="open">📖 开源</button>
+  </div>
+
+  <!-- Tool Sections -->
+  <div id="content"></div>
+
+  <!-- Empty State -->
+  <div id="empty" class="empty" style="display:none">
+    <div class="icon">🔍</div>
+    <div>没有找到匹配的工具</div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>AI导航 · 每日更新 · <span id="lastUpdated"></span></p>
+  <p style="margin-top:4px">Made with ❤️ by 和珅 | <a href="https://github.com/jusaka/ai-nav" style="color:var(--accent);text-decoration:none">GitHub</a></p>
+</div>
+
+<!-- Back to top -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function() {
+  let toolsData = null;
+  let currentCat = 'all';
+  let currentFilter = 'all';
+  let searchQuery = '';
+
+  // Load data
+  fetch('data/tools.json')
+    .then(r => r.json())
+    .then(data => {
+      toolsData = data;
+      init();
+    });
+
+  function init() {
+    // Stats
+    document.getElementById('statTools').textContent = toolsData.tools.length;
+    document.getElementById('statCats').textContent = toolsData.categories.length;
+    document.getElementById('statDomestic').textContent = toolsData.tools.filter(t => t.tags?.includes('国内直连')).length;
+    document.getElementById('lastUpdated').textContent = '更新于 ' + toolsData.lastUpdated;
+
+    // Category nav
+    const nav = document.getElementById('catNav');
+    nav.innerHTML = `<button class="cat-btn active" data-cat="all">🏠 全部</button>` +
+      toolsData.categories.map(c => `<button class="cat-btn" data-cat="${c.id}">${c.icon} ${c.name}</button>`).join('');
+    
+    nav.addEventListener('click', e => {
+      const btn = e.target.closest('.cat-btn');
+      if (!btn) return;
+      nav.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentCat = btn.dataset.cat;
+      render();
+      // Scroll to content
+      document.querySelector('.main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // Filter bar
+    document.getElementById('filterBar').addEventListener('click', e => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      render();
+    });
+
+    // Search
+    let searchTimer;
+    document.getElementById('searchInput').addEventListener('input', e => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => {
+        searchQuery = e.target.value.trim().toLowerCase();
+        render();
+      }, 200);
+    });
+
+    // Theme
+    const savedTheme = localStorage.getItem('ainav_theme');
+    if (savedTheme === 'light' || (!savedTheme && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.classList.add('light');
+      document.getElementById('themeToggle').textContent = '☀️';
+    }
+    document.getElementById('themeToggle').onclick = () => {
+      const isLight = document.documentElement.classList.toggle('light');
+      document.getElementById('themeToggle').textContent = isLight ? '☀️' : '🌙';
+      localStorage.setItem('ainav_theme', isLight ? 'light' : 'dark');
+    };
+
+    // Back to top
+    window.addEventListener('scroll', () => {
+      document.getElementById('backTop').style.display = window.scrollY > 400 ? 'flex' : 'none';
+    });
+
+    render();
+  }
+
+  function filterTools(tools) {
+    let filtered = tools;
+
+    // Category
+    if (currentCat !== 'all') {
+      filtered = filtered.filter(t => t.category === currentCat);
+    }
+
+    // Filter
+    if (currentFilter === 'featured') {
+      filtered = filtered.filter(t => t.featured);
+    } else if (currentFilter === 'domestic') {
+      filtered = filtered.filter(t => t.tags?.includes('国内直连'));
+    } else if (currentFilter === 'free') {
+      filtered = filtered.filter(t => t.tags?.some(tag => tag.includes('免费')));
+    } else if (currentFilter === 'open') {
+      filtered = filtered.filter(t => t.tags?.includes('开源'));
+    }
+
+    // Search
+    if (searchQuery) {
+      filtered = filtered.filter(t => 
+        t.name.toLowerCase().includes(searchQuery) ||
+        t.desc.toLowerCase().includes(searchQuery) ||
+        t.category.includes(searchQuery) ||
+        t.tags?.some(tag => tag.includes(searchQuery))
+      );
+    }
+
+    return filtered;
+  }
+
+  function getTagClass(tag) {
+    if (tag === '国内直连') return 'tag-domestic';
+    if (tag.includes('需翻墙')) return 'tag-overseas';
+    if (tag === '免费' || tag === '开源') return 'tag-free';
+    if (tag === '付费') return 'tag-paid';
+    if (tag.includes('免费+付费')) return 'tag-free';
+    if (tag === '开源') return 'tag-open';
+    return 'tag-free';
+  }
+
+  function getInitial(name) {
+    // Get first character or emoji-like icon
+    const firstChar = name.charAt(0);
+    if (/[a-zA-Z]/.test(firstChar)) return firstChar.toUpperCase();
+    return firstChar;
+  }
+
+  function renderToolCard(tool) {
+    const tags = (tool.tags || []).map(tag => 
+      `<span class="tag ${getTagClass(tag)}">${tag}</span>`
+    ).join('');
+    const starBadge = tool.featured ? '<span class="star">⭐</span>' : '';
+    const iconHtml = `<div class="tool-icon">${getInitial(tool.name)}</div>`;
+
+    return `<a class="tool-card ${tool.featured ? 'featured' : ''}" href="${tool.url}" target="_blank" rel="noopener">
+      ${iconHtml}
+      <div class="tool-info">
+        <div class="tool-name">${tool.name} ${starBadge}</div>
+        <div class="tool-desc">${tool.desc}</div>
+        <div class="tool-tags">${tags}</div>
+      </div>
+    </a>`;
+  }
+
+  function render() {
+    const content = document.getElementById('content');
+    const empty = document.getElementById('empty');
+    const allFiltered = filterTools(toolsData.tools);
+
+    if (allFiltered.length === 0) {
+      content.innerHTML = '';
+      empty.style.display = '';
+      return;
+    }
+    empty.style.display = 'none';
+
+    if (currentCat !== 'all' || searchQuery) {
+      // Single flat list
+      content.innerHTML = `<div class="tool-grid">${allFiltered.map(renderToolCard).join('')}</div>`;
+    } else {
+      // Grouped by category
+      let html = '';
+      for (const cat of toolsData.categories) {
+        const catTools = allFiltered.filter(t => t.category === cat.id);
+        if (catTools.length === 0) continue;
+        html += `<div class="section" id="cat-${cat.id}">
+          <div class="section-header">
+            <span class="icon">${cat.icon}</span>
+            <h2>${cat.name}</h2>
+            <span class="section-count">${catTools.length} 款</span>
+          </div>
+          <div class="tool-grid">${catTools.map(renderToolCard).join('')}</div>
+        </div>`;
+      }
+      content.innerHTML = html;
+    }
+  }
+})();
+</script>
+</body>
+</html>
