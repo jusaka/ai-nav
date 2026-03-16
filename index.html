@@ -147,7 +147,7 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
 <!-- Filter Bar -->
 <div class="main">
   <div class="filter-bar" id="filterBar">
-    <button class="filter-btn" data-filter="all">全部</button>
+    <button class="filter-btn active" data-filter="all">全部</button>
     <button class="filter-btn" data-filter="favorites">❤️ 我的收藏</button>
     <button class="filter-btn" data-filter="featured">⭐ 精选</button>
     <button class="filter-btn" data-filter="domestic">🇨🇳 国内直连</button>
@@ -266,7 +266,7 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
     }
 
     // Filter
-    } else if (currentFilter === 'favorites') {
+    if (currentFilter === 'favorites') {
       filtered = filtered.filter(t => favorites.includes(t.name));
     } else if (currentFilter === 'featured') {
       filtered = filtered.filter(t => t.featured);
