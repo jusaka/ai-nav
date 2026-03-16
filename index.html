@@ -370,10 +370,9 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
   function getTagClass(tag) {
     if (tag === '国内直连') return 'tag-domestic';
     if (tag.includes('需翻墙')) return 'tag-overseas';
-    if (tag === '免费' || tag === '开源') return 'tag-free';
-    if (tag === '付费') return 'tag-paid';
-    if (tag.includes('免费+付费')) return 'tag-free';
     if (tag === '开源') return 'tag-open';
+    if (tag === '免费' || tag.includes('免费+付费')) return 'tag-free';
+    if (tag === '付费') return 'tag-paid';
     return 'tag-free';
   }
 
@@ -391,26 +390,30 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
     return iconColors[Math.abs(hash) % iconColors.length];
   }
 
+  function escAttr(s) { return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
   function renderToolCard(tool) {
     const tags = (tool.tags || []).map(tag => 
-      `<span class="tag ${getTagClass(tag)}">${tag}</span>`
+      `<span class="tag ${getTagClass(tag)}">${escHtml(tag)}</span>`
     ).join('');
     const starBadge = tool.featured ? '<span class="star">⭐</span>' : '';
     const newBadge = tool.addedDate && (Date.now() - new Date(tool.addedDate).getTime()) < 7*24*60*60*1000 ? '<span class="new-badge">NEW</span>' : '';
     const iconColor = getIconColor(tool.name);
-    // Favicon: try multiple sources, fallback to initial letter
     const host = new URL(tool.url).hostname;
-    const iconHtml = `<div class="tool-icon" style="background:${iconColor}15"><img src="https://favicon.im/${host}" onerror="this.onerror=null;this.src='https://icon.horse/icon/${host}'" onload="if(this.naturalWidth<2){this.style.display='none';this.parentElement.textContent='${getInitial(tool.name)}';this.parentElement.style.color='${iconColor}';this.parentElement.style.fontWeight='800';this.parentElement.style.fontSize='18px'}" loading="lazy"></div>`;
+    const initial = escAttr(getInitial(tool.name));
+    const iconHtml = `<div class="tool-icon" style="background:${iconColor}15"><img src="https://favicon.im/${host}" onerror="this.onerror=null;this.src='https://icon.horse/icon/${host}'" onload="if(this.naturalWidth<2){this.style.display='none';this.parentElement.textContent='${initial}';this.parentElement.style.color='${iconColor}';this.parentElement.style.fontWeight='800';this.parentElement.style.fontSize='18px'}" loading="lazy"></div>`;
 
     const isFav = favorites.includes(tool.name);
-    const favBtn = `<button class="fav-btn ${isFav ? 'active' : ''}" data-name="${tool.name}" onclick="event.preventDefault();event.stopPropagation();toggleFav('${tool.name.replace(/'/g,"\\'")}')">♥</button>`;
+    const eName = escAttr(tool.name);
+    const favBtn = `<button class="fav-btn ${isFav ? 'active' : ''}" data-name="${eName}" onclick="event.preventDefault();event.stopPropagation();toggleFav(this.dataset.name)">♥</button>`;
 
-    return `<div class="tool-card ${tool.featured ? 'featured' : ''}" onclick="openModal('${tool.name.replace(/'/g,"\\'")}')">
+    return `<div class="tool-card ${tool.featured ? 'featured' : ''}" data-tool="${eName}" onclick="openModal(this.dataset.tool)">
       ${iconHtml}
       <div class="tool-info">
-        <div class="tool-name">${tool.name} ${newBadge} ${starBadge} ${favBtn}</div>
-        <div class="tool-desc">${tool.desc}</div>
-        <div class="tool-url">${new URL(tool.url).hostname}</div>
+        <div class="tool-name">${escHtml(tool.name)} ${newBadge} ${starBadge} ${favBtn}</div>
+        <div class="tool-desc">${escHtml(tool.desc)}</div>
+        <div class="tool-url">${host}</div>
         <div class="tool-tags">${tags}</div>
       </div>
     </div>`;

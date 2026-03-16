@@ -508,7 +508,7 @@
     {
       "name": "Replit",
       "url": "https://replit.com",
-      "desc": "在线IDE+AI编程，云端运行，协作开发",
+      "desc": "在线IDE+AI编程助手，云端运行，全栈开发无需本地环境",
       "category": "coding",
       "tags": [
         "需翻墙",
@@ -688,7 +688,7 @@
     {
       "name": "即时设计",
       "url": "https://js.design",
-      "desc": "国产Figma替代，AI设计助手，免费用",
+      "desc": "国产Figma替代，内置AI设计助手，文字描述生成UI设计稿",
       "category": "design",
       "tags": [
         "国内直连",
@@ -721,13 +721,14 @@
     {
       "name": "Figma",
       "url": "https://www.figma.com",
-      "desc": "UI/UX设计工具，AI辅助设计+原型",
+      "desc": "UI/UX设计工具，AI辅助设计+自动布局+原型",
       "category": "design",
       "tags": [
         "需翻墙",
         "免费+付费"
       ],
-      "icon": "figma.svg"
+      "icon": "figma.svg",
+      "featured": true
     },
     {
       "name": "有道AI学习",
@@ -754,7 +755,7 @@
     {
       "name": "Quizlet",
       "url": "https://quizlet.com",
-      "desc": "AI闪卡学习，自动生成练习题",
+      "desc": "AI闪卡学习，自动生成练习题和复习计划",
       "category": "education",
       "tags": [
         "需翻墙",
@@ -839,16 +840,6 @@
       "url": "https://writingo.net",
       "desc": "字节跳动英文写作助手，免费好用",
       "category": "writing",
-      "tags": [
-        "国内直连",
-        "免费"
-      ]
-    },
-    {
-      "name": "即梦AI视频",
-      "url": "https://jimeng.jianying.com/ai-tool/video/generate",
-      "desc": "字节跳动AI视频生成，效果好，国内免翻",
-      "category": "video",
       "tags": [
         "国内直连",
         "免费"
@@ -1201,18 +1192,6 @@
       "addedDate": "2026-03-16"
     },
     {
-      "name": "Metaso",
-      "url": "https://metaso.cn",
-      "desc": "秘塔AI搜索，学术/深度搜索国内最好用",
-      "category": "search",
-      "tags": [
-        "国内直连",
-        "免费"
-      ],
-      "featured": true,
-      "addedDate": "2026-03-16"
-    },
-    {
       "name": "Exa",
       "url": "https://exa.ai",
       "desc": "语义搜索引擎，专为AI应用设计的搜索API",
@@ -1246,17 +1225,6 @@
       "addedDate": "2026-03-16"
     },
     {
-      "name": "Leonardo.ai",
-      "url": "https://leonardo.ai",
-      "desc": "AI图像生成平台，游戏美术/概念设计专业级",
-      "category": "image",
-      "tags": [
-        "需翻墙",
-        "免费+付费"
-      ],
-      "addedDate": "2026-03-16"
-    },
-    {
       "name": "Playground AI",
       "url": "https://playground.com",
       "desc": "免费AI绘画，每天500张，社区分享",
@@ -1268,7 +1236,7 @@
       "addedDate": "2026-03-16"
     },
     {
-      "name": "Canva AI",
+      "name": "Canva (国际版)",
       "url": "https://www.canva.com",
       "desc": "设计神器内置AI图像生成/编辑/背景移除",
       "category": "image",
@@ -1286,17 +1254,6 @@
       "category": "image",
       "tags": [
         "国内直连",
-        "免费+付费"
-      ],
-      "addedDate": "2026-03-16"
-    },
-    {
-      "name": "Luma Dream Machine",
-      "url": "https://lumalabs.ai",
-      "desc": "3D和视频生成，物理效果逼真",
-      "category": "video",
-      "tags": [
-        "需翻墙",
         "免费+付费"
       ],
       "addedDate": "2026-03-16"
@@ -1368,28 +1325,6 @@
       "addedDate": "2026-03-16"
     },
     {
-      "name": "Replit AI",
-      "url": "https://replit.com",
-      "desc": "在线IDE+AI编程助手，全栈开发无需本地环境",
-      "category": "coding",
-      "tags": [
-        "需翻墙",
-        "免费+付费"
-      ],
-      "addedDate": "2026-03-16"
-    },
-    {
-      "name": "Codeium",
-      "url": "https://codeium.com",
-      "desc": "免费AI代码补全，支持70+语言，VS Code插件",
-      "category": "coding",
-      "tags": [
-        "需翻墙",
-        "免费"
-      ],
-      "addedDate": "2026-03-16"
-    },
-    {
       "name": "Tabnine",
       "url": "https://www.tabnine.com",
       "desc": "AI代码补全，支持私有部署，企业安全",
@@ -1434,35 +1369,12 @@
       "addedDate": "2026-03-16"
     },
     {
-      "name": "Figma AI",
-      "url": "https://www.figma.com",
-      "desc": "设计工具之王内置AI，自动布局+图片生成",
-      "category": "design",
-      "tags": [
-        "需翻墙",
-        "免费+付费"
-      ],
-      "featured": true,
-      "addedDate": "2026-03-16"
-    },
-    {
       "name": "Framer AI",
       "url": "https://www.framer.com",
       "desc": "AI生成响应式网站，无需代码，直接发布",
       "category": "design",
       "tags": [
         "需翻墙",
-        "免费+付费"
-      ],
-      "addedDate": "2026-03-16"
-    },
-    {
-      "name": "即时AI",
-      "url": "https://js.design/ai",
-      "desc": "国产AI设计工具，文字描述生成UI设计稿",
-      "category": "design",
-      "tags": [
-        "国内直连",
         "免费+付费"
       ],
       "addedDate": "2026-03-16"
@@ -1493,17 +1405,6 @@
       "name": "Mathway",
       "url": "https://www.mathway.com",
       "desc": "AI数学解题，拍照识别+分步解析",
-      "category": "education",
-      "tags": [
-        "需翻墙",
-        "免费+付费"
-      ],
-      "addedDate": "2026-03-16"
-    },
-    {
-      "name": "Quizlet AI",
-      "url": "https://quizlet.com",
-      "desc": "AI闪卡学习，自动生成复习题目",
       "category": "education",
       "tags": [
         "需翻墙",
@@ -1630,17 +1531,6 @@
       "tags": [
         "需翻墙",
         "免费+付费"
-      ],
-      "addedDate": "2026-03-16"
-    },
-    {
-      "name": "Otter学术",
-      "url": "https://scholar.google.com",
-      "desc": "Google学术搜索，全球最大学术论文检索",
-      "category": "education",
-      "tags": [
-        "需翻墙",
-        "免费"
       ],
       "addedDate": "2026-03-16"
     },
