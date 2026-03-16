@@ -1166,6 +1166,560 @@
         "免费+付费"
       ],
       "addedDate": "2026-03-16"
+    },
+    {
+      "name": "零一万物",
+      "url": "https://www.lingyiwanwu.com",
+      "desc": "李开复创办，Yi系列大模型，中文能力强",
+      "category": "chat",
+      "tags": [
+        "国内直连",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Mistral",
+      "url": "https://chat.mistral.ai",
+      "desc": "法国AI独角兽，开源模型领导者，高性价比",
+      "category": "chat",
+      "tags": [
+        "需翻墙",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Pi",
+      "url": "https://pi.ai",
+      "desc": "Inflection AI出品，最擅长情感陪伴的AI",
+      "category": "chat",
+      "tags": [
+        "需翻墙",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Metaso",
+      "url": "https://metaso.cn",
+      "desc": "秘塔AI搜索，学术/深度搜索国内最好用",
+      "category": "search",
+      "tags": [
+        "国内直连",
+        "免费"
+      ],
+      "featured": true,
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Exa",
+      "url": "https://exa.ai",
+      "desc": "语义搜索引擎，专为AI应用设计的搜索API",
+      "category": "search",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Tavily",
+      "url": "https://tavily.com",
+      "desc": "为AI Agent优化的搜索API，开发者友好",
+      "category": "search",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Copy.ai",
+      "url": "https://www.copy.ai",
+      "desc": "营销文案AI，广告/邮件/社媒内容一键生成",
+      "category": "writing",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Leonardo.ai",
+      "url": "https://leonardo.ai",
+      "desc": "AI图像生成平台，游戏美术/概念设计专业级",
+      "category": "image",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Playground AI",
+      "url": "https://playground.com",
+      "desc": "免费AI绘画，每天500张，社区分享",
+      "category": "image",
+      "tags": [
+        "需翻墙",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Canva AI",
+      "url": "https://www.canva.com",
+      "desc": "设计神器内置AI图像生成/编辑/背景移除",
+      "category": "image",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "featured": true,
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "美图AI",
+      "url": "https://ai.meitu.com",
+      "desc": "美图秀秀AI，写真/证件照/商品图",
+      "category": "image",
+      "tags": [
+        "国内直连",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Luma Dream Machine",
+      "url": "https://lumalabs.ai",
+      "desc": "3D和视频生成，物理效果逼真",
+      "category": "video",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "万兴播爆",
+      "url": "https://virbo.wondershare.cn",
+      "desc": "万兴科技AI数字人视频，支持100+语言",
+      "category": "video",
+      "tags": [
+        "国内直连",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "腾讯智影",
+      "url": "https://zenvideo.qq.com",
+      "desc": "腾讯AI视频创作，数字人+文本转视频",
+      "category": "video",
+      "tags": [
+        "国内直连",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Domo AI",
+      "url": "https://domoai.app",
+      "desc": "视频转动漫风格，一键二次元化",
+      "category": "video",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Whisper",
+      "url": "https://github.com/openai/whisper",
+      "desc": "OpenAI开源语音转文字，支持99种语言",
+      "category": "audio",
+      "tags": [
+        "开源",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "讯飞听见",
+      "url": "https://www.iflyrec.com",
+      "desc": "科大讯飞语音转写，中文识别率最高",
+      "category": "audio",
+      "tags": [
+        "国内直连",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Mubert",
+      "url": "https://mubert.com",
+      "desc": "AI背景音乐生成，视频/播客/游戏配乐",
+      "category": "audio",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Replit AI",
+      "url": "https://replit.com",
+      "desc": "在线IDE+AI编程助手，全栈开发无需本地环境",
+      "category": "coding",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Codeium",
+      "url": "https://codeium.com",
+      "desc": "免费AI代码补全，支持70+语言，VS Code插件",
+      "category": "coding",
+      "tags": [
+        "需翻墙",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Tabnine",
+      "url": "https://www.tabnine.com",
+      "desc": "AI代码补全，支持私有部署，企业安全",
+      "category": "coding",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Beautiful.ai",
+      "url": "https://www.beautiful.ai",
+      "desc": "AI自动排版PPT，设计感拉满",
+      "category": "office",
+      "tags": [
+        "需翻墙",
+        "付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Tome",
+      "url": "https://tome.app",
+      "desc": "AI叙事PPT生成，适合商业演示",
+      "category": "office",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "钉钉AI",
+      "url": "https://www.dingtalk.com",
+      "desc": "阿里钉钉内置AI，会议纪要+智能总结+文档",
+      "category": "office",
+      "tags": [
+        "国内直连",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Figma AI",
+      "url": "https://www.figma.com",
+      "desc": "设计工具之王内置AI，自动布局+图片生成",
+      "category": "design",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "featured": true,
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Framer AI",
+      "url": "https://www.framer.com",
+      "desc": "AI生成响应式网站，无需代码，直接发布",
+      "category": "design",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "即时AI",
+      "url": "https://js.design/ai",
+      "desc": "国产AI设计工具，文字描述生成UI设计稿",
+      "category": "design",
+      "tags": [
+        "国内直连",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Krea AI",
+      "url": "https://www.krea.ai",
+      "desc": "实时AI图像生成/增强/编辑，设计师工具箱",
+      "category": "design",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Looka",
+      "url": "https://looka.com",
+      "desc": "AI Logo设计，输入品牌名自动生成logo方案",
+      "category": "design",
+      "tags": [
+        "需翻墙",
+        "付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Mathway",
+      "url": "https://www.mathway.com",
+      "desc": "AI数学解题，拍照识别+分步解析",
+      "category": "education",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Quizlet AI",
+      "url": "https://quizlet.com",
+      "desc": "AI闪卡学习，自动生成复习题目",
+      "category": "education",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "有道翻译",
+      "url": "https://fanyi.youdao.com",
+      "desc": "网易AI翻译，支持109种语言+文档翻译",
+      "category": "education",
+      "tags": [
+        "国内直连",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "火山翻译",
+      "url": "https://translate.volcengine.com",
+      "desc": "字节AI翻译，支持全文/术语/口语化翻译",
+      "category": "education",
+      "tags": [
+        "国内直连",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Scholarcy",
+      "url": "https://www.scholarcy.com",
+      "desc": "AI论文摘要生成，学术文献速读",
+      "category": "education",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Monica",
+      "url": "https://monica.im",
+      "desc": "Chrome浏览器AI助手，网页阅读/写作/翻译一体",
+      "category": "chat",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Civitai",
+      "url": "https://civitai.com",
+      "desc": "Stable Diffusion模型/LoRA社区，最大AI绘画资源库",
+      "category": "image",
+      "tags": [
+        "需翻墙",
+        "免费",
+        "开源"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Clipdrop",
+      "url": "https://clipdrop.co",
+      "desc": "Stability AI图像编辑套件，去背景/扩图/擦除",
+      "category": "image",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Fliki",
+      "url": "https://fliki.ai",
+      "desc": "文字转视频+配音，支持75种语言",
+      "category": "video",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Synthesia",
+      "url": "https://www.synthesia.io",
+      "desc": "企业级AI数字人视频，160+虚拟主播",
+      "category": "video",
+      "tags": [
+        "需翻墙",
+        "付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Otter.ai",
+      "url": "https://otter.ai",
+      "desc": "英文会议AI转写+实时字幕+摘要",
+      "category": "office",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Pieces",
+      "url": "https://pieces.app",
+      "desc": "AI代码片段管理+智能搜索，开发者效率工具",
+      "category": "coding",
+      "tags": [
+        "需翻墙",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Sourcegraph Cody",
+      "url": "https://sourcegraph.com/cody",
+      "desc": "AI代码搜索+理解，大型代码库的AI助手",
+      "category": "coding",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Otter学术",
+      "url": "https://scholar.google.com",
+      "desc": "Google学术搜索，全球最大学术论文检索",
+      "category": "education",
+      "tags": [
+        "需翻墙",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Connected Papers",
+      "url": "https://www.connectedpapers.com",
+      "desc": "论文关联图谱，可视化探索学术文献",
+      "category": "education",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Podcastle",
+      "url": "https://podcastle.ai",
+      "desc": "AI播客制作，录音+降噪+转写+剪辑",
+      "category": "audio",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Writesonic",
+      "url": "https://writesonic.com",
+      "desc": "AI营销内容生成，SEO文章/广告/产品描述",
+      "category": "writing",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "万彩AI",
+      "url": "https://ai.kezhan365.com",
+      "desc": "AI写作/绘画/视频/数字人综合平台",
+      "category": "writing",
+      "tags": [
+        "国内直连",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Globe Explorer",
+      "url": "https://explorer.globe.engineer",
+      "desc": "AI知识图谱搜索，可视化主题探索",
+      "category": "search",
+      "tags": [
+        "需翻墙",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "AI Colors",
+      "url": "https://aicolors.co",
+      "desc": "AI配色方案生成，输入描述生成调色板",
+      "category": "design",
+      "tags": [
+        "需翻墙",
+        "免费"
+      ],
+      "addedDate": "2026-03-16"
+    },
+    {
+      "name": "Uizard",
+      "url": "https://uizard.io",
+      "desc": "AI快速原型设计，截图/手绘转UI设计",
+      "category": "design",
+      "tags": [
+        "需翻墙",
+        "免费+付费"
+      ],
+      "addedDate": "2026-03-16"
     }
   ],
   "lastUpdated": "2026-03-16"
