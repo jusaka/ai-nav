@@ -289,10 +289,17 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
   }
 
   function getInitial(name) {
-    // Get first character or emoji-like icon
     const firstChar = name.charAt(0);
     if (/[a-zA-Z]/.test(firstChar)) return firstChar.toUpperCase();
     return firstChar;
+  }
+
+  // Color palette for tool icons
+  const iconColors = ['#3b82f6','#ef4444','#10b981','#f59e0b','#8b5cf6','#ec4899','#06b6d4','#f97316','#6366f1','#14b8a6'];
+  function getIconColor(name) {
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    return iconColors[Math.abs(hash) % iconColors.length];
   }
 
   function renderToolCard(tool) {
@@ -300,7 +307,8 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
       `<span class="tag ${getTagClass(tag)}">${tag}</span>`
     ).join('');
     const starBadge = tool.featured ? '<span class="star">⭐</span>' : '';
-    const iconHtml = `<div class="tool-icon">${getInitial(tool.name)}</div>`;
+    const iconColor = getIconColor(tool.name);
+    const iconHtml = `<div class="tool-icon" style="background:${iconColor}20;color:${iconColor};font-weight:800;font-size:18px">${getInitial(tool.name)}</div>`;
 
     return `<a class="tool-card ${tool.featured ? 'featured' : ''}" href="${tool.url}" target="_blank" rel="noopener">
       ${iconHtml}
