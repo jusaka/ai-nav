@@ -156,6 +156,7 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
     <div><span id="statTools">0</span> 款工具</div>
     <div><span id="statCats">0</span> 个分类</div>
     <div><span id="statDomestic">0</span> 国内直连</div>
+    <div id="statNewWrap" style="display:none;color:#ef4444"><span id="statNew">0</span> 本周新增</div>
   </div>
 </div>
 
@@ -169,6 +170,7 @@ html,body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe U
   <div class="filter-bar" id="filterBar">
     <button class="filter-btn active" data-filter="all">全部</button>
     <button class="filter-btn" data-filter="favorites">❤️ 我的收藏</button>
+    <button class="filter-btn" data-filter="new">🆕 本周新增</button>
     <button class="filter-btn" data-filter="featured">⭐ 精选</button>
     <button class="filter-btn" data-filter="domestic">🇨🇳 国内直连</button>
     <button class="filter-btn" data-filter="free">🆓 免费</button>
@@ -237,6 +239,13 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
     document.getElementById('statTools').textContent = toolsData.tools.length;
     document.getElementById('statCats').textContent = toolsData.categories.length;
     document.getElementById('statDomestic').textContent = toolsData.tools.filter(t => t.tags?.includes('国内直连')).length;
+    // Count new tools (added in last 7 days)
+    const weekAgo = Date.now() - 7*24*60*60*1000;
+    const newCount = toolsData.tools.filter(t => t.addedDate && new Date(t.addedDate).getTime() > weekAgo).length;
+    if (newCount > 0) {
+      document.getElementById('statNew').textContent = newCount;
+      document.getElementById('statNewWrap').style.display = '';
+    }
     document.getElementById('lastUpdated').textContent = '更新于 ' + toolsData.lastUpdated;
 
     // Category nav
@@ -331,6 +340,9 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
     // Filter
     if (currentFilter === 'favorites') {
       filtered = filtered.filter(t => favorites.includes(t.name));
+    } else if (currentFilter === 'new') {
+      const weekAgo = Date.now() - 7*24*60*60*1000;
+      filtered = filtered.filter(t => t.addedDate && new Date(t.addedDate).getTime() > weekAgo);
     } else if (currentFilter === 'featured') {
       filtered = filtered.filter(t => t.featured);
     } else if (currentFilter === 'domestic') {
