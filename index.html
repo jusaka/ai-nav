@@ -7,6 +7,7 @@
 <meta name="description" content="AI工具导航 - 精选国内外最好用的AI工具，对话、绘画、视频、编程、办公一站式导航">
 <title>AI导航 · 发现最好用的AI工具</title>
 <link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -229,10 +230,13 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
 
   // Load data
   fetch('data/tools.json')
-    .then(r => r.json())
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(data => {
       toolsData = data;
       init();
+    })
+    .catch(err => {
+      document.getElementById('content').innerHTML = '<div class="empty"><div class="icon">⚠️</div><div>数据加载失败，请刷新重试</div></div>';
     });
 
   function init() {
@@ -263,8 +267,12 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
       btn.classList.add('active');
       currentCat = btn.dataset.cat;
       render();
-      // Scroll to section if in "all" view
       if (currentCat !== 'all') {
+        const section = document.getElementById('cat-' + currentCat);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return;
+        }
         document.querySelector('.main').scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -331,7 +339,7 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
   }
 
   function filterTools(tools) {
-    let filtered = tools;
+    let filtered = [...tools];
 
     // Category
     if (currentCat !== 'all') {
@@ -354,12 +362,16 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
       filtered = filtered.filter(t => t.tags?.includes('开源'));
     }
 
+    // Sort: featured first
+    filtered.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+
     // Search
     if (searchQuery) {
       filtered = filtered.filter(t => 
         t.name.toLowerCase().includes(searchQuery) ||
         t.desc.toLowerCase().includes(searchQuery) ||
         t.category.includes(searchQuery) ||
+        t.url.toLowerCase().includes(searchQuery) ||
         t.tags?.some(tag => tag.includes(searchQuery))
       );
     }
@@ -436,11 +448,12 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
     currentModalTool = tool;
     const iconColor = getIconColor(tool.name);
     const host = new URL(tool.url).hostname;
-    document.getElementById('modalIcon').innerHTML = `<img src="https://favicon.im/${host}" onerror="this.style.display='none';this.parentElement.textContent='${getInitial(tool.name)}';this.parentElement.style.color='${iconColor}';this.parentElement.style.fontWeight='800';this.parentElement.style.fontSize='24px'" style="width:100%;height:100%;object-fit:cover;border-radius:10px">`;
+    const mInitial = escAttr(getInitial(tool.name));
+    document.getElementById('modalIcon').innerHTML = `<img src="https://favicon.im/${host}" onerror="this.style.display='none';this.parentElement.textContent='${mInitial}';this.parentElement.style.color='${iconColor}';this.parentElement.style.fontWeight='800';this.parentElement.style.fontSize='24px'" style="width:100%;height:100%;object-fit:cover;border-radius:10px">`;
     document.getElementById('modalIcon').style.background = iconColor + '15';
     document.getElementById('modalTitle').textContent = tool.name;
     document.getElementById('modalDesc').textContent = tool.desc;
-    document.getElementById('modalTags').innerHTML = (tool.tags||[]).map(tag => `<span class="tag ${getTagClass(tag)}">${tag}</span>`).join('');
+    document.getElementById('modalTags').innerHTML = (tool.tags||[]).map(tag => `<span class="tag ${getTagClass(tag)}">${escHtml(tag)}</span>`).join('');
     document.getElementById('modalLink').href = tool.url;
     const isFav = favorites.includes(tool.name);
     document.getElementById('modalFav').textContent = isFav ? '💔 取消收藏' : '❤️ 收藏';
