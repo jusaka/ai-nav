@@ -596,6 +596,19 @@
       "icon": "notion.svg"
     },
     {
+      "name": "Remio",
+      "url": "https://remio.ai",
+      "desc": "本地优先AI记忆与知识库，索引文件、网页、会议、邮件和笔记，快速找回个人上下文",
+      "category": "office",
+      "tags": [
+        "知识库",
+        "本地优先",
+        "效率"
+      ],
+      "icon": "remio.svg",
+      "featured": true
+    },
+    {
       "name": "Jasper",
       "url": "https://www.jasper.ai",
       "desc": "营销文案AI工具，支持多种语言和模板",
